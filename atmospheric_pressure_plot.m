@@ -53,7 +53,8 @@ for day = 1:31
 end
 
 % Plot white dotted line for sensor 1 evening measurements (on top)
-plot(1:31, sensor1Evening, 'Color', [1, 1, 1], 'LineStyle', ':', 'LineWidth', 3);
+plot(1:31, sensor1Evening, 'Color', [1, 1, 1], 'LineStyle', ':', 'LineWidth', 3, ...
+     'Marker', 'o', 'MarkerSize', 8, 'MarkerFaceColor', 'none', 'MarkerEdgeColor', [1, 1, 1]);
 
 % Add pressure limit lines
 yline(930, '-', 'Color', 'm', 'LineWidth', 2, ...
