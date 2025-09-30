@@ -30,33 +30,21 @@ for day = 1:31
     end
 end
 
+% Extract evening measurements for sensor 1 (measurement 3 = evening)
+sensor1Evening = squeeze(atmosphericPressure(1, 3, :));
+
 % Create the plot
 figure('Position', [100, 100, 1200, 800]);
 hold on;
 
-% Define colors for each sensor
-colors = ['r', 'g', 'b', 'm'];
-sensorNames = {'Sensor 1', 'Sensor 2', 'Sensor 3', 'Sensor 4'};
-measurementTimes = {'Morning', 'Noon', 'Evening'};
-
-% Plot daily averages for each sensor
-for sensor = 1:4
-    plot(1:31, dailyAverages(sensor, :), 'Color', colors(sensor), 'LineWidth', 2, ...
-         'DisplayName', [sensorNames{sensor} ' (Daily Average)']);
-end
-
-% Add individual measurement points (optional - can be commented out for cleaner plot)
-% for sensor = 1:4
-%     for measurement = 1:3
-%         scatter(1:31, squeeze(atmosphericPressure(sensor, measurement, :)), ...
-%                 20, colors(sensor), 'filled', 'Alpha', 0.3);
-%     end
-% end
+% Plot evening measurements for sensor 1
+plot(1:31, sensor1Evening, 'r-o', 'LineWidth', 2, 'MarkerSize', 6, ...
+     'DisplayName', 'Sensor 1 - Evening Measurements');
 
 % Customize the plot
 xlabel('Day of Month', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Atmospheric Pressure (hPa)', 'FontSize', 12, 'FontWeight', 'bold');
-title('Atmospheric Pressure Measurements Over 31 Days', 'FontSize', 14, 'FontWeight', 'bold');
+title('Sensor 1 Evening Atmospheric Pressure Measurements - 31 Days', 'FontSize', 14, 'FontWeight', 'bold');
 legend('Location', 'best', 'FontSize', 10);
 grid on;
 grid minor;
@@ -67,27 +55,24 @@ ylim([900, 1100]);
 xticks(1:2:31);
 yticks(900:25:1100);
 
-% Add some statistics to the plot
-meanPressure = mean(dailyAverages(:));
-stdPressure = std(dailyAverages(:));
-text(0.02, 0.98, sprintf('Mean Pressure: %.1f hPa\nStd Deviation: %.1f hPa', meanPressure, stdPressure), ...
+% Add statistics for sensor 1 evening measurements
+meanPressure = mean(sensor1Evening);
+stdPressure = std(sensor1Evening);
+minPressure = min(sensor1Evening);
+maxPressure = max(sensor1Evening);
+text(0.02, 0.98, sprintf('Mean: %.1f hPa\nStd: %.1f hPa\nMin: %.1f hPa\nMax: %.1f hPa', ...
+     meanPressure, stdPressure, minPressure, maxPressure), ...
      'Units', 'normalized', 'VerticalAlignment', 'top', 'FontSize', 10, ...
      'BackgroundColor', 'white', 'EdgeColor', 'black');
 
-% Display summary statistics
-fprintf('\nSummary Statistics:\n');
-fprintf('Overall mean pressure: %.2f hPa\n', mean(atmosphericPressure(:)));
-fprintf('Overall std deviation: %.2f hPa\n', std(atmosphericPressure(:)));
-fprintf('Min pressure: %.2f hPa\n', min(atmosphericPressure(:)));
-fprintf('Max pressure: %.2f hPa\n', max(atmosphericPressure(:)));
-
-% Display sensor-specific statistics
-fprintf('\nSensor-specific daily averages:\n');
-for sensor = 1:4
-    fprintf('%s: Mean = %.2f hPa, Std = %.2f hPa\n', sensorNames{sensor}, ...
-            mean(dailyAverages(sensor, :)), std(dailyAverages(sensor, :)));
-end
+% Display summary statistics for sensor 1 evening measurements
+fprintf('\nSensor 1 Evening Measurements Statistics:\n');
+fprintf('Mean pressure: %.2f hPa\n', mean(sensor1Evening));
+fprintf('Std deviation: %.2f hPa\n', std(sensor1Evening));
+fprintf('Min pressure: %.2f hPa\n', min(sensor1Evening));
+fprintf('Max pressure: %.2f hPa\n', max(sensor1Evening));
+fprintf('Range: %.2f hPa\n', max(sensor1Evening) - min(sensor1Evening));
 
 % Save the plot
-saveas(gcf, 'atmospheric_pressure_plot.png');
-fprintf('\nPlot saved as atmospheric_pressure_plot.png\n');
+saveas(gcf, 'sensor1_evening_pressure.png');
+fprintf('\nPlot saved as sensor1_evening_pressure.png\n');
