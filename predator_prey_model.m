@@ -36,14 +36,14 @@ function [fig, T, Y] = predator_prey_model(y_0, t)
     % Create the figure
     fig = figure;
     
-    % Plot 1: Population dynamics over time
+    % Plot 1: Predator vs Prey over time
     subplot(1, 2, 1);
     plot(T, Y(:, 1), 'b-', 'LineWidth', 2, 'DisplayName', 'Prey (y1)');
     hold on;
     plot(T, Y(:, 2), 'r-', 'LineWidth', 2, 'DisplayName', 'Predator (y2)');
     xlabel('Time');
-    ylabel('Population');
-    title('Population Dynamics Over Time');
+    ylabel('Number of Animals');
+    title('Predator vs Prey Over Time');
     legend('Location', 'best');
     grid on;
     
