@@ -56,7 +56,7 @@ for day = 1:31
         % Points inside range - green filled
         if day == 1  % Only add to legend once
             scatter(day, sensor1Evening(day), 80, 'g', 'filled', 'MarkerEdgeColor', 'k', 'LineWidth', 1, ...
-                    'DisplayName', 'Filtered Data');
+                    'DisplayName', 'Verified Data');
         else
             scatter(day, sensor1Evening(day), 80, 'g', 'filled', 'MarkerEdgeColor', 'k', 'LineWidth', 1, ...
                     'HandleVisibility', 'off');
