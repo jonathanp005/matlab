@@ -37,7 +37,7 @@ function [fig, T, Y] = predator_prey_model(y_0, t)
     fig = figure;
     
     % Plot 1: Population dynamics over time
-    subplot(2, 2, 1);
+    subplot(1, 2, 1);
     plot(T, Y(:, 1), 'b-', 'LineWidth', 2, 'DisplayName', 'Prey (y1)');
     hold on;
     plot(T, Y(:, 2), 'r-', 'LineWidth', 2, 'DisplayName', 'Predator (y2)');
@@ -48,7 +48,7 @@ function [fig, T, Y] = predator_prey_model(y_0, t)
     grid on;
     
     % Plot 2: Phase plane (predator vs prey)
-    subplot(2, 2, 2);
+    subplot(1, 2, 2);
     plot(Y(:, 1), Y(:, 2), 'k-', 'LineWidth', 1.5);
     hold on;
     plot(Y(1, 1), Y(1, 2), 'go', 'MarkerSize', 8, 'MarkerFaceColor', 'g', 'DisplayName', 'Start');
@@ -57,22 +57,6 @@ function [fig, T, Y] = predator_prey_model(y_0, t)
     ylabel('Predator Population (y2)');
     title('Phase Plane (Predator vs Prey)');
     legend('Location', 'best');
-    grid on;
-    
-    % Plot 3: Prey population over time
-    subplot(2, 2, 3);
-    plot(T, Y(:, 1), 'b-', 'LineWidth', 2);
-    xlabel('Time');
-    ylabel('Prey Population (y1)');
-    title('Prey Population Over Time');
-    grid on;
-    
-    % Plot 4: Predator population over time
-    subplot(2, 2, 4);
-    plot(T, Y(:, 2), 'r-', 'LineWidth', 2);
-    xlabel('Time');
-    ylabel('Predator Population (y2)');
-    title('Predator Population Over Time');
     grid on;
     
     % Add overall title
