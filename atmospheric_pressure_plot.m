@@ -41,6 +41,12 @@ hold on;
 plot(1:31, sensor1Evening, 'r-o', 'LineWidth', 2, 'MarkerSize', 6, ...
      'DisplayName', 'Sensor 1 - Evening Measurements');
 
+% Add pressure limit lines
+yline(930, '--', 'Color', [1, 0.75, 0.8], 'LineWidth', 2, ...
+      'DisplayName', 'Lower Limit (930 hPa)');
+yline(1060, '--', 'Color', [1, 0.75, 0.8], 'LineWidth', 2, ...
+      'DisplayName', 'Upper Limit (1060 hPa)');
+
 % Customize the plot
 xlabel('Day of Month', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Atmospheric Pressure (hPa)', 'FontSize', 12, 'FontWeight', 'bold');
