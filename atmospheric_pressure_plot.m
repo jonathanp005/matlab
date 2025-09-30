@@ -42,8 +42,7 @@ lowerLimit = 930;
 upperLimit = 1060;
 
 % Plot white dotted line for sensor 1 evening measurements
-plot(1:31, sensor1Evening, 'w:', 'LineWidth', 2, ...
-     'DisplayName', 'Sensor 1 - Evening Measurements');
+plot(1:31, sensor1Evening, 'w:', 'LineWidth', 2, 'MarkerSize', 6);
 
 % Color points based on pressure limits
 for day = 1:31
@@ -57,24 +56,16 @@ for day = 1:31
 end
 
 % Add pressure limit lines
-yline(lowerLimit, '--', 'Color', [1, 0.75, 0.8], 'LineWidth', 2, ...
-      'DisplayName', 'Lower Limit (930 hPa)');
-yline(upperLimit, '--', 'Color', [1, 0.75, 0.8], 'LineWidth', 2, ...
-      'DisplayName', 'Upper Limit (1060 hPa)');
+yline(930, '-', 'Color', 'm', 'LineWidth', 2, ...
+      'DisplayName', 'Lower Limit');
+yline(1060, '-', 'Color', 'm', 'LineWidth', 2, ...
+      'DisplayName', 'Upper Limit');
 
 % Customize the plot
-xlabel('Day of Month', 'FontSize', 12, 'FontWeight', 'bold');
-ylabel('Atmospheric Pressure (hPa)', 'FontSize', 12, 'FontWeight', 'bold');
-title('Sensor 1 Evening Atmospheric Pressure Measurements - 31 Days', 'FontSize', 14, 'FontWeight', 'bold');
-legend('Location', 'best', 'FontSize', 10);
-grid on;
-grid minor;
-
-% Set axis limits and ticks
-xlim([1, 31]);
-ylim([900, 1100]);
-xticks(1:2:31);
-yticks(900:25:1100);
+xlabel('Day of Month', 'FontSize', 12);
+ylabel('Atmospheric Pressure (hPa)', 'FontSize', 12);
+title('First sensor, evening, all days', 'FontSize', 14);
+legend('Location', 'northeastoutside', 'FontSize', 8);
 
 % Set background color to dark for better contrast with white line
 set(gca, 'Color', [0.1, 0.1, 0.1]);
