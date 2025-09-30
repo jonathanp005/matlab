@@ -41,19 +41,19 @@ hold on;
 lowerLimit = 930;
 upperLimit = 1060;
 
-% Plot white dotted line for sensor 1 evening measurements
-plot(1:31, sensor1Evening, 'Color', [1, 1, 1], 'LineStyle', ':', 'LineWidth', 2, 'MarkerSize', 6);
-
-% Color points based on pressure limits
+% Color points based on pressure limits first
 for day = 1:31
     if sensor1Evening(day) < lowerLimit || sensor1Evening(day) > upperLimit
         % Points outside range - white filled
-        scatter(day, sensor1Evening(day), 50, 'w', 'filled', 'MarkerEdgeColor', 'k');
+        scatter(day, sensor1Evening(day), 80, 'w', 'filled', 'MarkerEdgeColor', 'k', 'LineWidth', 1);
     else
         % Points inside range - green filled
-        scatter(day, sensor1Evening(day), 50, 'g', 'filled', 'MarkerEdgeColor', 'k');
+        scatter(day, sensor1Evening(day), 80, 'g', 'filled', 'MarkerEdgeColor', 'k', 'LineWidth', 1);
     end
 end
+
+% Plot white dotted line for sensor 1 evening measurements (on top)
+plot(1:31, sensor1Evening, 'Color', [1, 1, 1], 'LineStyle', ':', 'LineWidth', 3);
 
 % Add pressure limit lines
 yline(930, '-', 'Color', 'm', 'LineWidth', 2, ...
