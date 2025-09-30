@@ -42,7 +42,7 @@ lowerLimit = 930;
 upperLimit = 1060;
 
 % Plot white dotted line for sensor 1 evening measurements
-plot(1:31, sensor1Evening, 'w:', 'LineWidth', 2, 'MarkerSize', 6);
+plot(1:31, sensor1Evening, 'Color', [1, 1, 1], 'LineStyle', ':', 'LineWidth', 2, 'MarkerSize', 6);
 
 % Color points based on pressure limits
 for day = 1:31
