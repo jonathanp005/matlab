@@ -67,6 +67,12 @@ ylabel('Atmospheric Pressure (hPa)', 'FontSize', 12);
 title('First sensor, evening, all days', 'FontSize', 14);
 legend('Location', 'northeastoutside', 'FontSize', 8);
 
+% Set axis limits to show all 31 days
+xlim([1, 31]);
+ylim([900, 1100]);
+xticks(1:31);
+yticks(900:25:1100);
+
 % Set background color to dark for better contrast with white line
 set(gca, 'Color', [0.1, 0.1, 0.1]);
 set(gcf, 'Color', [0.1, 0.1, 0.1]);
