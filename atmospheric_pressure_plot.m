@@ -34,7 +34,8 @@ end
 sensor1Evening = squeeze(atmosphericPressure(1, 3, :));
 
 % Create the plot
-figure('Position', [100, 100, 1200, 800]);
+fig = figure;
+fig.Position = [100, 100, 1200, 800];
 hold on;
 
 % Define pressure limits
