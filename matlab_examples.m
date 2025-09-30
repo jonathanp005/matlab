@@ -35,6 +35,20 @@ for i = 1:length(departments)
         departments{i}, height(dept_data), mean(dept_data.Salary));
 end
 
+% Group by department and display every name by department
+fprintf('\nNames grouped by department:\n');
+departments = unique(data.Department);
+for i = 1:length(departments)
+    dept_data = data(strcmp(data.Department, departments{i}), :);
+    names = dept_data.Name;
+    fprintf('%s: %s\n', departments{i}, strjoin(names, ', '));
+end
+
+% Alternative method using groupsummary for statistics
+fprintf('\nDepartment statistics using groupsummary:\n');
+dept_stats = groupsummary(data, 'Department', {'mean', 'count'}, 'Salary');
+disp(dept_stats);
+
 %% 2. CONDITIONAL INDEXING
 fprintf('\n=== 2. CONDITIONAL INDEXING ===\n');
 
