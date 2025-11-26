@@ -1,1 +1,22 @@
-Matlab Practice
+# Basic C++ Project
+
+Small starter project that demonstrates how to structure a C++17 codebase with
+separate headers, sources, and a CMake build.
+
+## Layout
+- `include/` shared headers for simple math and string helpers
+- `src/` library implementations plus a demo `main.cpp`
+- `CMakeLists.txt` builds the helper library and demo executable
+
+## Build and run
+```
+cmake -S . -B build
+cmake --build build
+./build/basic_cpp_app
+```
+
+## Tests
+A smoke test ensures the demo executable runs without crashing:
+```
+ctest --test-dir build
+```
